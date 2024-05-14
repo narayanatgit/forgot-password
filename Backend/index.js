@@ -14,6 +14,11 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	next();
+	});
 
 mongoose.connect("mongodb+srv://124003158:ye9rKngwRvlzhXku@cluster0.zkppvs9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
 	useNewUrlParser: true,
